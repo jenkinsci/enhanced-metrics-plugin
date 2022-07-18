@@ -14,7 +14,7 @@
     <artifactId>enhanced-metrics</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>hpi</packaging>
-    <name>Jenkins Enhanced Metrics</name>
+    <name>Enhanced Metrics</name>
     <description>Enables detailed metrics for Jobs/Nodes/Users</description>
     <url>https://github.com/jenkinsci/remote-file-plugin</url>
     <licenses>
