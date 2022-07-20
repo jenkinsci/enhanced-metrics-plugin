@@ -19,7 +19,7 @@ public class MetricsCollector extends Collector {
 
     @Override
     public List<MetricFamilySamples> collect() {
-        logger.info("Adding Jenkins Enhanced Metrics to Prometheus Collector");
+        logger.fine("Adding Jenkins Enhanced Metrics to Prometheus Collector");
         List<MetricFamilySamples> metricFamilySamples = new ArrayList<>();
         metricFamilySamples.add(new OnlineNodeMetric().getCounterMetricFamily());
         metricFamilySamples.add(new NodeLabelUsageMetric().getCounterMetricFamily());
