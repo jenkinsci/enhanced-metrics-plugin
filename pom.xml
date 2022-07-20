@@ -17,6 +17,12 @@
     <name>Enhanced Metrics</name>
     <description>Enables detailed metrics for Jobs/Nodes/Users</description>
     <url>https://github.com/jenkinsci/remote-file-plugin</url>
+    <scm>
+        <connection>scm:git:ssh://github.com/jenkinsci/enhanced-metrics-plugin.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/enhanced-metrics-plugin.git</developerConnection>
+        <url>https://github.com/jenkinsci/enhanced-metrics-plugin</url>
+        <tag>HEAD</tag>
+    </scm>
     <licenses>
         <license>
             <name>MIT License</name>
