@@ -35,7 +35,9 @@ public class NodeLabelUsageMetric extends AbstractGenericMetric {
 
         @Override
         public void taskAccepted(Executor executor, Queue.Task task) {
-            String label = task.getAssignedLabel().getName();
+            String label = EnhancedMetrics.defaultNodeName;
+            if( task.getAssignedLabel() != null)
+                label = task.getAssignedLabel().getName();
             Double counter = (double) 1;
             if (NodeLabelUsageMetric.labelRunCounters.containsKey(label)) {
                 counter = NodeLabelUsageMetric.labelRunCounters.get(label);

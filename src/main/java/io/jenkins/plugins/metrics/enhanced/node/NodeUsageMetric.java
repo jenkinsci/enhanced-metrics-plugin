@@ -5,6 +5,7 @@ import hudson.model.*;
 import io.jenkins.plugins.metrics.enhanced.EnhancedMetrics;
 import io.jenkins.plugins.metrics.enhanced.generic.label.AbstractGenericMetric;
 import io.jenkins.plugins.metrics.enhanced.generic.label.GenericMetric;
+import jenkins.model.Jenkins;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +20,22 @@ public class NodeUsageMetric extends AbstractGenericMetric {
 
     public NodeUsageMetric() {
         super(EnhancedMetrics.generateMetricName("node_run_count"), "Usage Count of Nodes", Collections.singletonList("name"));
+        this.initNodeRunCounters();
+    }
+
+    private void initNodeRunCounters(){
+        Jenkins jenkins = Jenkins.getInstanceOrNull();
+        if( jenkins == null){
+            logger.warning("Jenkins instance is null, skipping nodeRunCounters initialization");
+            return;
+        }
+        List<Node> nodes = jenkins.getNodes();
+        nodes.forEach(node -> {
+            String nodeName = node.getNodeName();
+            if(!nodeRunCounters.containsKey(nodeName))
+                nodeRunCounters.put(nodeName, (double)0);
+        });
+
     }
 
     @Override
@@ -44,7 +61,7 @@ public class NodeUsageMetric extends AbstractGenericMetric {
                 if (node instanceof Hudson) {
                     // Means it is running on the builtinNode
                     logger.fine("Node is instance of Hudson. Setting node name as 'builtin'");
-                    nodeName = "builtinNode";
+                    nodeName = EnhancedMetrics.defaultNodeName;
                 } else {
                     nodeName = node.getNodeName();
                 }
