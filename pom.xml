@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -10,7 +12,7 @@
     </parent>
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>enhanced-metrics</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>hpi</packaging>
     <name>Enhanced Metrics</name>
     <description>Enables detailed metrics for Jobs/Nodes/Users</description>
@@ -19,7 +21,7 @@
         <connection>scm:git:ssh://github.com/jenkinsci/enhanced-metrics-plugin.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/enhanced-metrics-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/enhanced-metrics-plugin</url>
-        <tag>enhanced-metrics-1.0</tag>
+        <tag>HEAD</tag>
     </scm>
     <licenses>
         <license>
