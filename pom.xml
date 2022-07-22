@@ -10,7 +10,7 @@
     </parent>
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>enhanced-metrics</artifactId>
-    <version>1.4-SNAPSHOT</version>
+    <version>1.4</version>
     <packaging>hpi</packaging>
     <name>Enhanced Metrics</name>
     <description>Enables detailed metrics for Jobs/Nodes/Users</description>
@@ -19,7 +19,7 @@
         <connection>scm:git:ssh://github.com/jenkinsci/enhanced-metrics-plugin.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/enhanced-metrics-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/enhanced-metrics-plugin</url>
-        <tag>HEAD</tag>
+        <tag>enhanced-metrics-1.4</tag>
     </scm>
     <licenses>
         <license>
