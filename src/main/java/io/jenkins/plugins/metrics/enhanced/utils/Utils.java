@@ -14,6 +14,13 @@ public class Utils {
 
     private static Logger logger = Logger.getLogger(Utils.class.getName());
 
+    public static Double calculateFreeCounter(Double totalCounter, Double inUseCounter){
+        Double freeCount = totalCounter - inUseCounter;
+        if( freeCount < (double)0)
+            freeCount = (double)0;
+        return freeCount;
+    }
+
     public static String getNodeName(Executor executor){
         String nodeName = "undefined";
         Computer computer = executor.getOwner();

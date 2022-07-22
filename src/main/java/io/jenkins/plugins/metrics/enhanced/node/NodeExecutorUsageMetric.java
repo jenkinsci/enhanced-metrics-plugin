@@ -30,22 +30,22 @@ public class NodeExecutorUsageMetric extends AbstractGenericMetric {
             Jenkins jenkins = Utils.getJenkins();
             Computer[] computers = jenkins.getComputers();
             Arrays.stream(computers).forEach(computer -> {
-                Double totalCount = (double) 0;
+                Double totalCounter = (double) 0;
                 String nodeName = "undefined";
                 if (computer.getNode() instanceof Hudson) {
                     nodeName = EnhancedMetrics.defaultNodeName;
-                    totalCount = (double) jenkins.getNumExecutors();
+                    totalCounter = (double) jenkins.getNumExecutors();
                 } else {
                     if (computer.getNode() != null) {
                         nodeName = computer.getNode().getNodeName();
-                        totalCount = (double) computer.getNode().getNumExecutors();
+                        totalCounter = (double) computer.getNode().getNumExecutors();
                     }
                 }
-                Double inUseCount = Utils.getCounter(executorInUseCount, nodeName);
-                Double freeCount = totalCount - inUseCount;
-                Utils.setCounter(executorTotalCount, nodeName, totalCount);
-                Utils.setCounter(executorFreeCount, nodeName, freeCount);
-                Utils.setCounter(executorInUseCount, nodeName, inUseCount);
+                Double inUseCounter = Utils.getCounter(executorInUseCount, nodeName);
+                Double freeCounter = Utils.calculateFreeCounter(totalCounter,inUseCounter);
+                Utils.setCounter(executorTotalCount, nodeName, totalCounter);
+                Utils.setCounter(executorFreeCount, nodeName, freeCounter);
+                Utils.setCounter(executorInUseCount, nodeName, inUseCounter);
             });
         } catch (Exception e) {
             logger.log(Level.WARNING, e.getMessage(), e);
@@ -83,7 +83,7 @@ public class NodeExecutorUsageMetric extends AbstractGenericMetric {
             String nodeName = Utils.getNodeName(executor);
             Double totalCounter = Utils.getNodeExecutorNum(executor);
             Double inUseCounter = Utils.increaseCounter(executorInUseCount, nodeName);
-            Double freeCounter = Utils.setCounter(executorFreeCount, nodeName, (totalCounter - inUseCounter));
+            Double freeCounter = Utils.setCounter(executorFreeCount, nodeName, Utils.calculateFreeCounter(totalCounter,inUseCounter));
             logger.fine(String.format("NodeExecutorUsageMetric is added for nodeName:%s - counter:inUseCounter - value:%s", nodeName, inUseCounter));
             logger.fine(String.format("NodeExecutorUsageMetric is added for nodeName:%s - counter:freeCounter - value:%s", nodeName, freeCounter));
             logger.fine(String.format("NodeExecutorUsageMetric is added for nodeName:%s - counter:totalCounter - value:%s", nodeName, totalCounter));
@@ -95,7 +95,7 @@ public class NodeExecutorUsageMetric extends AbstractGenericMetric {
             String nodeName = Utils.getNodeName(executor);
             Double totalCounter = Utils.getNodeExecutorNum(executor);
             Double inUseCounter = Utils.decreaseCounter(executorInUseCount, nodeName);
-            Double freeCounter = Utils.setCounter(executorFreeCount, nodeName, (totalCounter - inUseCounter));
+            Double freeCounter = Utils.setCounter(executorFreeCount, nodeName, Utils.calculateFreeCounter(totalCounter,inUseCounter));
             logger.fine(String.format("NodeExecutorUsageMetric is added for nodeName:%s - counter:inUseCounter - value:%s", nodeName, inUseCounter));
             logger.fine(String.format("NodeExecutorUsageMetric is added for nodeName:%s - counter:freeCounter - value:%s", nodeName, freeCounter));
             logger.fine(String.format("NodeExecutorUsageMetric is added for nodeName:%s - counter:totalCounter - value:%s", nodeName, totalCounter));
