@@ -1,7 +1,6 @@
 package io.jenkins.plugins.metrics.enhanced.generic.label;
 
 import io.prometheus.client.CounterMetricFamily;
-
 import java.util.List;
 
 public abstract class AbstractGenericMetric implements IGenericMetric {

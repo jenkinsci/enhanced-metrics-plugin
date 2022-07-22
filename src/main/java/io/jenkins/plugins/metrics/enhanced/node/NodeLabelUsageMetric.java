@@ -6,6 +6,7 @@ import hudson.model.Queue;
 import io.jenkins.plugins.metrics.enhanced.EnhancedMetrics;
 import io.jenkins.plugins.metrics.enhanced.generic.label.AbstractGenericMetric;
 import io.jenkins.plugins.metrics.enhanced.generic.label.GenericMetric;
+import io.jenkins.plugins.metrics.enhanced.utils.Utils;
 
 import java.util.*;
 import java.util.logging.Logger;
@@ -34,16 +35,11 @@ public class NodeLabelUsageMetric extends AbstractGenericMetric {
     public static class NodeLabelUsageExecutionListener implements ExecutorListener {
 
         @Override
-        public void taskAccepted(Executor executor, Queue.Task task) {
+        public synchronized void taskAccepted(Executor executor, Queue.Task task) {
             String label = EnhancedMetrics.defaultNodeName;
             if( task.getAssignedLabel() != null)
                 label = task.getAssignedLabel().getName();
-            Double counter = (double) 1;
-            if (NodeLabelUsageMetric.labelRunCounters.containsKey(label)) {
-                counter = NodeLabelUsageMetric.labelRunCounters.get(label);
-                counter = counter + 1;
-            }
-            NodeLabelUsageMetric.labelRunCounters.put(label, counter);
+            Double counter = Utils.increaseCounter(labelRunCounters,label);
             logger.fine(String.format("NodeLabelUsageMetric is added for label:%s - task:%s - counter:%s", label, task.getFullDisplayName(), counter));
         }
     }

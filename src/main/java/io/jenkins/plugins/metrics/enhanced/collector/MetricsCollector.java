@@ -2,6 +2,7 @@ package io.jenkins.plugins.metrics.enhanced.collector;
 
 import hudson.Extension;
 import io.jenkins.plugins.metrics.enhanced.job.JobDetailsMetric;
+import io.jenkins.plugins.metrics.enhanced.node.NodeExecutorUsageMetric;
 import io.jenkins.plugins.metrics.enhanced.node.NodeLabelUsageMetric;
 import io.jenkins.plugins.metrics.enhanced.node.NodeUsageMetric;
 import io.jenkins.plugins.metrics.enhanced.node.OnlineNodeMetric;
@@ -26,6 +27,7 @@ public class MetricsCollector extends Collector {
         metricFamilySamples.add(new UserMetric().getCounterMetricFamily());
         metricFamilySamples.add(new NodeUsageMetric().getCounterMetricFamily());
         metricFamilySamples.add(new JobDetailsMetric().getCounterMetricFamily());
+        metricFamilySamples.add(new NodeExecutorUsageMetric().getCounterMetricFamily());
         return metricFamilySamples;
     }
 }

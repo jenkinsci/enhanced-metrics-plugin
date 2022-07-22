@@ -21,6 +21,12 @@ This plugin adds more detailed metrics for Jobs and Nodes by using Prometheus Co
 ```jenkins_enhanced_metrics_node_run_count_total{name="Name of the Node"}``` (counter)
 <br>&nbsp;&nbsp;Number of runs for each Node.
 
+```jenkins_enhanced_metrics_node_executor_usage_count_total{name="Name of the Node",countType="executorTotalCount/executorFreeCount/executorInUseCount"}``` (counter)
+<br>&nbsp;&nbsp;Provides details for the nodes.
+<br>&nbsp;&nbsp;*executorTotalCount*: Number of total executors in that node.
+<br>&nbsp;&nbsp;*executorFreeCount*: Number of free executors in that node.
+<br>&nbsp;&nbsp;*executorInUseCount*: Number of in use executors in that node.
+
 ## Job Metrics
 
 ```jenkins_enhanced_metrics_job_count_details_total{name="<Name of the Job", type="<Class Name of the Job>",countType="buildCount/childJobCount/childPRCount" }``` (counter)
