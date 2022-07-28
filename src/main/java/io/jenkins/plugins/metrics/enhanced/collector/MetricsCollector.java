@@ -6,6 +6,7 @@ import io.jenkins.plugins.metrics.enhanced.node.NodeExecutorUsageMetric;
 import io.jenkins.plugins.metrics.enhanced.node.NodeLabelUsageMetric;
 import io.jenkins.plugins.metrics.enhanced.node.NodeUsageMetric;
 import io.jenkins.plugins.metrics.enhanced.node.OnlineNodeMetric;
+import io.jenkins.plugins.metrics.enhanced.script.ScriptApproveWaitingMetric;
 import io.jenkins.plugins.metrics.enhanced.user.UserMetric;
 import io.prometheus.client.Collector;
 
@@ -28,6 +29,7 @@ public class MetricsCollector extends Collector {
         metricFamilySamples.add(new NodeUsageMetric().getCounterMetricFamily());
         metricFamilySamples.add(new JobDetailsMetric().getCounterMetricFamily());
         metricFamilySamples.add(new NodeExecutorUsageMetric().getCounterMetricFamily());
+        metricFamilySamples.add(new ScriptApproveWaitingMetric().getCounterMetricFamily());
         return metricFamilySamples;
     }
 }

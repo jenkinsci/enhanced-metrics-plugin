@@ -34,3 +34,7 @@ This plugin adds more detailed metrics for Jobs and Nodes by using Prometheus Co
 <br>&nbsp;&nbsp;*buildCount*: Number of the last build.
 <br>&nbsp;&nbsp;*childJobCount*: Number of the child jobs (If any).
 <br>&nbsp;&nbsp;*childPRCount*: Number of the PR jobs (If any).
+
+## Script Metrics
+```jenkins_enhanced_metrics_script_approve_waiting_count_total``` (counter)
+<br>&nbsp;&nbsp;Provides number of script waiting for Administrative Approval
