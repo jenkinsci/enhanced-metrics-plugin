@@ -14,7 +14,7 @@
     <packaging>hpi</packaging>
     <name>Enhanced Metrics</name>
     <description>Enables detailed metrics for Jobs/Nodes/Users</description>
-    <url>https://github.com/jenkinsci/remote-file-plugin</url>
+    <url>https://github.com/jenkinsci/enhanced-metrics-plugin</url>
     <scm>
         <connection>scm:git:ssh://github.com/jenkinsci/enhanced-metrics-plugin.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/enhanced-metrics-plugin.git</developerConnection>
